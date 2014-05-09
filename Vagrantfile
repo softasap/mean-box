@@ -4,8 +4,8 @@ VAGRANTFILE_API_VERSION = "2"
 DEVELOPER_BOOTSTRAP_PATH = "./test/integration/"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |c|
-  c.vm.box = "lampbox-ubuntu-12.04-vsdev"
-  c.vm.box_url = "https://dl.dropbox.com/s/c249j11hfxpzeji/precise32_dev_recentupdates.box "                  
+  c.vm.box = "meanbox-ubuntu-12.04-vsdev"
+  c.vm.box_url = "https://dl.dropbox.com/s/fstwllsh2yeqwto/meanbox-ubuntu-12.04-vsdev.box"                                    
   c.vm.hostname = "precise32.vsdev"
   c.vm.network(:forwarded_port, {:guest=>80, :host=>8080})
   c.vm.network(:forwarded_port, {:guest=>3306, :host=>3316})
@@ -28,6 +28,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |c|
       
      chef.add_role "nodejs_mean"     
      chef.add_role "nodejs_debug"     
+
+     chef.add_recipe "nginx"     
 
   end
 end
